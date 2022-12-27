@@ -22,6 +22,7 @@ int main() {
     s1.push(8);
     s1.push(7);
     s1.push(6);//First
+    cout<<"printing s1\n";
     s1.print();
     cout << "Reversing by push into a new stack\n";
     stack<Node> s2 = s1;//Q.1.) 1.
