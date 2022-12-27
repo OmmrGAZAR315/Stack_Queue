@@ -23,6 +23,17 @@ public:
 
     void replace(int, int);
 
+    void deleteLastInput() {
+        if (front != nullptr) {
+            Node *temp = front;
+            while (temp->next != rear)
+                temp = temp->next;
+
+            temp->next = nullptr;
+            delete rear;
+            rear = temp;
+        }
+    }
 };
 
 template<class Node>
