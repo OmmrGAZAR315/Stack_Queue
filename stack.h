@@ -10,15 +10,29 @@ class stack {
     int length;
 
 public:
-    stack(int capacity);
-
     stack() {}
+
+    stack(stack<Node> &ss) {
+        ss.count();
+        size = ss.size;
+        length = ss.length;
+        int x = 0;
+        Node *temp = ss.top;
+        while (x++ < length) {
+            push(temp->num);
+            temp = temp->next;
+        }
+    }
+
+    void deleteEverything() {
+        delete top;
+    }
 
     void push(int item);
 
     int pop();
 
-    void Reverse_print();
+    stack<Node> Reverse_print();
 
     void print();
 
@@ -40,7 +54,7 @@ int stack<Node>::pop() {
 template<class Node>
 void stack<Node>::Delete(int item) {
     Node *temp = top;
-    Node *beforeTemp = temp;
+    Node *beforeTemp = top;
     while (temp != nullptr && temp->num != item) {
         beforeTemp = temp;
         temp = temp->next;
@@ -48,8 +62,9 @@ void stack<Node>::Delete(int item) {
     if (temp == nullptr) std::cout << "Not found!!!\n";
     else {
         beforeTemp->next = temp->next;
+        std::cout << "'" << temp->num << "'" << " Found!!...Deleted\n";
         delete temp;
-        std::cout << "Found!!...Deleted\n";
+        length--;
     }
 }
 
@@ -76,31 +91,25 @@ int stack<Node>::count() {
 }
 
 template<class Node>
-void stack<Node>::Reverse_print() {
+stack<Node> stack<Node>::Reverse_print() {
     stack<Node> ss;
     Node *temp = top;
     while (temp != nullptr) {
         ss.push(temp->num);
         temp = temp->next;
     }
-    delete this;
-    *this = ss;
+    return ss;
 }
 
 template<class Node>
 void stack<Node>::push(int item) {
     if (top == nullptr) {
         top = new Node(item);
-        return;
+    } else {
+        Node *temp = new Node(item);
+        temp->next = top;
+        top = temp;
     }
-    Node *temp = new Node(item);
-    temp->next = top;
-    top = temp;
-}
-
-template<class Node>
-stack<Node>::stack(int capacity) {
-    size = capacity;
 }
 
 #endif

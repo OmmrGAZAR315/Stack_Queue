@@ -13,6 +13,10 @@ public:
         size = capacity;
     }
 
+    void deleteEverything() {
+        delete front, rear;
+    }
+
     void enqueue(int item);
 
     void highPriorityEnqueue(int);
@@ -48,8 +52,9 @@ void queue<Node>::highPriorityEnqueue(int item) {
 template<class Node>
 void queue<Node>::display() {
     Node *temp = front;
-    while (temp != nullptr) {
-        std::cout << temp->num << std::endl;
+    int x = 0;
+    while (temp != nullptr && ++x) {
+        std::cout << x << " - " << temp->num << std::endl;
         temp = temp->next;
     }
 }
@@ -64,11 +69,11 @@ void queue<Node>::replace(int index, int item) {
     }
     temp = front;
     if (index > 0 && length >= index) {
-        std::cout << "Replacing... ";
+        std::cout << "Replacing index number " << index;
         for (int i = 1; i < index; i++)
             temp = temp->next;
         temp->num = item;
-        std::cout << "Replaced!\n";
+        std::cout << "...Replaced with! " << item << std::endl;
     } else std::cout << "Index out of range\n";
 }
 
