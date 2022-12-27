@@ -22,7 +22,7 @@ int main() {
     s1.push(8);
     s1.push(7);
     s1.push(6);//First
-    cout<<"printing s1\n";
+    cout << "printing s1\n";
     s1.print();
     cout << "Reversing by push into a new stack\n";
     stack<Node> s2 = s1;//Q.1.) 1.
@@ -32,7 +32,7 @@ int main() {
     cout << "Deleting specific item\n";
     s1.Delete(10);//Q.1.) 3.
     s1.print();
-    queue<Node> q1(5);
+    queue<Node> q1;
     q1.enqueue(1);//First
     q1.enqueue(2);
     q1.enqueue(3);

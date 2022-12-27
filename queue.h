@@ -9,12 +9,10 @@ class queue {
     node front = nullptr, rear = nullptr;
     int length, size;
 public:
-    queue(int capacity) {
-        size = capacity;
-    }
 
     void deleteEverything() {
-        delete front, rear;
+        delete front;
+        delete rear;
     }
 
     void enqueue(int item);
